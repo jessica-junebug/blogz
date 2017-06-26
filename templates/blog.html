@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-        <h1><center>Build A Blog</center></h1>
+        <h1><center>Blog Posts!</center></h1>
         <br>
-        <ul>
-            {% for post in posts %}
-            <h2><a href="/blog?id={{post.id}}">{{post.title}}</a></h2> 
-            <p>{{post.text}}</p>
-            <hr>
-            {% endfor %}
-        </ul>
+        <form action="/blog">
+            <ul>
+                {% for post in posts %}
+                <h2><a href="/blog?id={{post.id}}">{{post.title}}</a></h2> 
+                <p>{{post.text}}</p>
+                <br>
+                <h5>written by <a href="/blog?user={{post.owner.username}}">{{post.owner.username}}</a></h5>
+                <hr>
+                {% endfor %}
+            </ul>
+        </form>
 {% endblock %}

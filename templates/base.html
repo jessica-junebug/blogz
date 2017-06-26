@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Blogz</title>
     </head>
     <body>
-        <a href="/blog">Main Blog Page</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="/newpost">Add A Blog Entry</a>
+        <div style="text-align:left">
+            <a href="/">home</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/blog">all posts</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/newpost">new post</a>
+        </div>
+        <div style="text-align:right">
+            <a href="/logout">logout</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/login">login</a>
+        </div>
+
+        {% with messages = get_flashed_messages() %}    
+            <ul>
+                {% for message in messages %}
+                    <li>{{message}}</li>
+                {% endfor %}
+            </ul>
+        {% endwith %}
+
         {% block content %}
         {% endblock %}
     </body>
